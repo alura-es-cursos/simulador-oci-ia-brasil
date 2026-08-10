@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulator Exam - Oracle Cloud Infrastructure (1Z0-1122-26) OCI AI Foundations Associate</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V7SYBDQ59J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-V7SYBDQ59J');
+  </script>
+</head>
+
+
+<body>
+
+  <!-- ==================== START SCREEN ==================== -->
+  <div id="start-screen" class="screen active">
+    <div class="start-card">
+      <div class="start-oracle-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 56" width="190" height="56">
+          <rect width="190" height="56" rx="6" fill="#0C1622" />
+          <!-- orange block -->
+          <rect x="22" y="7" width="24" height="10" rx="2.5" fill="#E5801A" />
+          <!-- teal block -->
+          <rect x="14" y="19" width="28" height="10" rx="2.5" fill="#3AA8A8" />
+          <!-- sage green block -->
+          <rect x="7" y="31" width="30" height="10" rx="2.5" fill="#7BA87B" />
+          <text x="48" y="31" font-family="Arial,Helvetica,sans-serif" font-weight="bold" font-size="26"
+            fill="#FFFFFF">ONE</text>
+          <text x="48" y="45" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#B0BEC5">Oracle Next
+            Education</text>
+        </svg>
+      </div>
+      <h1>Simulator Exam</h1>
+      <h2>OCI AI Foundations Associate <strong>(1Z0-1122-26)</strong> <br /> Oracle Cloud Infrastructure</h2>
+      <div class="start-meta">
+        <div class="meta-box">
+          <span class="meta-val" id="start-q-count">—</span>
+          <span class="meta-lbl">Questions</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-box">
+          <span class="meta-val" id="start-duration">60 min</span>
+          <span class="meta-lbl">Duration</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-box">
+          <span class="meta-val" id="start-pass-pct">65%</span>
+          <span class="meta-lbl">Passing Score</span>
+        </div>
+      </div>
+      <p class="start-note">All questions are required before submitting.</p>
+      <button id="start-btn">Start Exam</button>
+    </div>
+  </div>
+
+  <!-- ==================== QUIZ SCREEN ==================== -->
+  <div id="quiz-screen" class="screen">
+    <div class="exam-banner"></div>
+
+    <header class="exam-header">
+      <div class="header-logo"></div>
+      <div class="header-title"></div>
+      <div class="header-nav">
+        <button class="hn-btn" id="hn-prev" title="Previous">&#9664;</button>
+        <span class="hn-indicator">
+          [&nbsp;<span id="hn-cur">1</span>&nbsp;|&nbsp;<span id="hn-tot">15</span>&nbsp;]
+        </span>
+        <button class="hn-btn" id="hn-next" title="Next">&#9654;</button>
+      </div>
+    </header>
+
+    <div class="timer-strip">
+      <span class="timer-main">Time remaining&nbsp;&nbsp;<strong id="timer">01:00:00</strong></span>
+      <span class="timer-sub">Test will be auto submitted for grading at 00:00:00</span>
+    </div>
+
+    <main class="q-area">
+      <div class="q-header-row">
+        <p id="q-text" class="q-text"></p>
+        <label class="mark-label">
+          <input type="checkbox" id="mark-cb" /> Mark for Review
+        </label>
+      </div>
+      <div id="options-list" class="options-list"></div>
+      <div id="exp-panel" class="exp-panel hidden"></div>
+    </main>
+
+    <footer class="exam-footer">
+      <span id="page-lbl" class="page-lbl">1 of 15 Pages</span>
+      <div class="footer-btns">
+        <button id="btn-prev" class="btn btn-outline">Previous</button>
+        <button id="btn-next" class="btn btn-dark">Next</button>
+        <button id="btn-summary" class="btn btn-outline">Summary</button>
+      </div>
+    </footer>
+
+    <div class="oci-badge">O</div>
+  </div>
+
+  <!-- ==================== SUMMARY SCREEN ==================== -->
+  <div id="summary-screen" class="screen">
+    <div class="exam-banner"></div>
+
+    <header class="exam-header">
+      <div class="header-logo"></div>
+      <div class="header-title"></div>
+      <div class="header-nav">
+        <span class="timer-inline">Time remaining&nbsp;<strong id="timer-s">01:00:00</strong></span>
+      </div>
+    </header>
+
+    <div class="summary-body">
+      <h2 class="summary-title">Exam Summary</h2>
+      <p id="summary-msg" class="summary-msg"></p>
+
+      <div id="summary-grid" class="summary-grid"></div>
+
+      <div class="summary-actions">
+        <button id="btn-back" class="btn btn-outline">Back to Exam</button>
+        <button id="btn-submit" class="btn btn-submit">Submit Exam</button>
+      </div>
+    </div>
+
+    <div class="oci-badge">O</div>
+  </div>
+
+  <!-- ==================== RESULTS SCREEN ==================== -->
+  <div id="results-screen" class="screen">
+    <div class="exam-banner"></div>
+
+    <header class="exam-header">
+      <div class="header-logo"></div>
+      <div class="header-title"></div>
+    </header>
+
+    <div class="results-body">
+      <div class="results-card">
+        <div id="result-badge" class="result-badge">PASSED</div>
+        <h2 class="results-title">Exam Results</h2>
+
+        <div class="results-stats">
+          <div class="stat-box">
+            <div class="stat-num" id="res-total">—</div>
+            <div class="stat-name">Total</div>
+          </div>
+          <div class="stat-box stat-correct">
+            <div class="stat-num" id="res-correct">—</div>
+            <div class="stat-name">Correct</div>
+          </div>
+          <div class="stat-box stat-incorrect">
+            <div class="stat-num" id="res-incorrect">—</div>
+            <div class="stat-name">Incorrect</div>
+          </div>
+          <div class="stat-box stat-score">
+            <div class="stat-num" id="res-pct">—</div>
+            <div class="stat-name">Score</div>
+          </div>
+        </div>
+
+        <p class="results-threshold">Passing threshold: <span id="res-pass-pct">65%</span></p>
+
+        <div class="results-actions">
+          <button id="btn-retake" class="btn btn-outline">Take Exam Again</button>
+          <button id="btn-review" class="btn btn-submit">Review Answers</button>
+          <button id="btn-incorrect" class="btn btn-dark hidden">Review Incorrect Questions</button>
+        </div>
+
+        <a id="official-exam-link"
+          href="https://mylearn.oracle.com/ou/learning-path/become-an-oci-ai-foundations-associate-free/163615"
+          target="_blank" rel="noopener noreferrer" class="official-exam-link hidden">Fazer a prova em Oracle
+          myLearn</a>
+      </div>
+    </div>
+
+    <div class="oci-badge">O</div>
+  </div>
+
+  <!-- ==================== INCORRECT QUESTIONS SCREEN ==================== -->
+  <div id="incorrect-screen" class="screen">
+    <div class="exam-banner"></div>
+
+    <header class="exam-header">
+      <div class="header-logo"></div>
+      <div class="header-title"></div>
+    </header>
+
+    <div class="summary-body">
+      <h2 class="summary-title">Incorrect Questions</h2>
+      <p id="incorrect-msg" class="summary-msg msg-warn"></p>
+
+      <div id="incorrect-grid" class="summary-grid"></div>
+
+      <div id="incorrect-detail" class="incorrect-detail hidden">
+        <button id="btn-incorrect-detail-back" class="btn btn-outline incorrect-detail-back">← Back to list</button>
+        <p class="q-text" id="incorrect-detail-question"></p>
+        <div class="options-list" id="incorrect-detail-options"></div>
+        <div class="exp-panel exp-wrong" id="incorrect-detail-exp"></div>
+      </div>
+
+      <div class="summary-actions">
+        <button id="btn-incorrect-close" class="btn btn-dark">Back to Results</button>
+      </div>
+    </div>
+
+    <div class="oci-badge">O</div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
