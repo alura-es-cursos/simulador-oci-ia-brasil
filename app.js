@@ -360,7 +360,7 @@ function showSummary() {
   if (unansweredIdx.length > 0) {
     const label = unansweredIdx.length === 1 ? "pregunta" : "preguntas";
     const numbers = unansweredIdx.map((idx) => idx + 1);
-    msg.textContent = `Falta responder ${unansweredIdx.length} ${label}: ${numbers.join(", ")}. Debes responderlas todas antes de enviar el examen.`;
+    msg.textContent = `Ainda falta responder ${unansweredIdx.length} ${label}: ${numbers.join(", ")}. Voce deve responder todas antes de enviar a prova.`;
     msg.classList.add("msg-warn");
     btnSubmit.disabled = true;
     setHidden(grid, false);
@@ -381,7 +381,7 @@ function showSummary() {
     });
   } else {
     msg.textContent =
-      "Has respondido todas las preguntas. Puedes enviar el examen cuando quieras.";
+      "Voce respondeu todas as questoes. Pode enviar a prova quando quiser.";
     msg.classList.add("msg-ok");
     btnSubmit.disabled = false;
     setHidden(grid, true);
@@ -429,19 +429,19 @@ function finishExam() {
   badge.classList.remove("not-approved", "improve", "ready");
   if (ratio < PASS_THRESHOLD) {
     badge.textContent =
-      "No aprobaste. Continúa practicando, revisa las respuestas incorrectas y continúa estudiando.";
+      "Ainda não foi aprobado. Continua praticando, revisa as respostas incorrectas e segue estudando.";
     badge.classList.add("not-approved");
   } else if (ratio < IMPROVE_THRESHOLD) {
     badge.textContent =
-      "¡Felicidades! Aprobaste el simulado, pero puedes mejorar tu puntaje. Revisa las respuestas incorrectas — vale la pena el esfuerzo.";
+      "Parabéns! Você passou na prova, mas ainda pode continuar melhorando. Revise as respostas incorretas — vale a pena o esforço.";
     badge.classList.add("improve");
   } else if (ratio < OFFICIAL_EXAM_THRESHOLD) {
     badge.textContent =
-      "¡Felicidades! Aprobaste el simulado. Con un poco más de práctica puedes alcanzar el 80%.";
+      "Parabéns! Você passou no simulado. Com um pouco mais de prática, você pode alcançar 80%.;
     badge.classList.add("ready");
   } else {
     badge.textContent =
-      "¡Felicidades! Estás listo para la prueba real en Oracle myLearn.";
+      "Parabéns! Você está pronto para o teste real no Oracle myLearn.";
     badge.classList.add("ready");
   }
 
@@ -487,7 +487,7 @@ function showIncorrectScreen() {
   const label =
     incorrectIdx.length === 1 ? "pregunta incorrecta" : "preguntas incorrectas";
   byId("incorrect-msg").textContent =
-    `Tienes ${incorrectIdx.length} ${label}. Haz clic en un número para ver la explicación.`;
+    `Tienes ${incorrectIdx.length} ${label}. Clique em um número para ver a explicação.`;
 
   const grid = byId("incorrect-grid");
   grid.innerHTML = "";
@@ -546,10 +546,10 @@ async function initApp() {
   } catch (err) {
     byId("start-q-count").textContent = "—";
     alert(
-      `Error cargando el banco de preguntas: ${err.message}\n` +
-        "Asegúrate de servir este proyecto con un servidor local " +
-        '(por ejemplo, la extensión "Live Server" de VS Code o "python -m http.server") ' +
-        "en lugar de abrir index.html directamente como archivo.",
+      `Erro ao carregar o banco de perguntas: ${err.message}\n` +
+        "Certifique-se de servir este projeto com um servidor local" +
+        '(por exemplo, a extensão "Live Server" do VS Code ou "python -m http.server") ' +
+        "em vez de abrir o index.html diretamente como arquivo.",
     );
     return;
   }
