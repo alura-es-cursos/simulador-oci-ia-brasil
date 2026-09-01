@@ -3,16 +3,20 @@
    `python -m http.server`, etc.) — opening index.html directly as a file:// URL
    will be blocked by the browser's CORS policy for local files. */
 
-const QUESTIONS_DB_PATH = 'questions-bd.json';
+const QUESTIONS_DB_PATH = "questions-bd.json";
 
 async function fetchQuestionsDB() {
-  const response = await fetch(QUESTIONS_DB_PATH, { cache: 'no-store' });
+  const response = await fetch(QUESTIONS_DB_PATH, { cache: "no-store" });
   if (!response.ok) {
-    throw new Error(`No se pudo cargar ${QUESTIONS_DB_PATH} (status ${response.status})`);
+    throw new Error(
+      `Não foi possível carregar ${QUESTIONS_DB_PATH} (status ${response.status})`,
+    );
   }
   const data = await response.json();
   if (!Array.isArray(data) || data.length === 0) {
-    throw new Error('El banco de preguntas está vacío o tiene un formato inválido.');
+    throw new Error(
+      "O banco de perguntas está vazio ou em um formato inválido.",
+    );
   }
   return data;
 }

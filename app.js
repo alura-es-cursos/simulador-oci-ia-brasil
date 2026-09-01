@@ -104,7 +104,7 @@ function getVisitorId() {
 
     return visitorId;
   } catch (error) {
-    console.warn("No se pudo obtener el ID del visitante:", error);
+    console.warn("Não foi possível obter o ID do visitante:", error);
     return null;
   }
 }
@@ -118,7 +118,7 @@ function getAttemptNumber() {
 
     return nextAttempt;
   } catch (error) {
-    console.warn("No se pudo guardar el número de intento:", error);
+    console.warn("Não foi possível salvar o número da tentativa:", error);
     return null;
   }
 }
@@ -146,16 +146,16 @@ function optionRowClass(opt, optIdx, selectedIdx) {
 }
 
 function answerStatusLine(item, answer) {
-  if (answer.selected === null) return "No respondiste esta pregunta.";
-  if (item.options[answer.selected].isCorrect) return "¡Correcto!";
-  return `Tu respuesta: ${escapeHtml(item.options[answer.selected].text)}`;
+  if (answer.selected === null) return "Você não respondeu esta pergunta.";
+  if (item.options[answer.selected].isCorrect) return "Correto!";
+  return `Sua resposta: ${escapeHtml(item.options[answer.selected].text)}`;
 }
 
 function explanationHTML(item, answer) {
   const correctOpt = item.options.find((o) => o.isCorrect);
   return `
     <strong>${answerStatusLine(item, answer)}</strong>
-    <p>Respuesta correcta: ${escapeHtml(correctOpt.text)}</p>
+    <p>Resposta correta: ${escapeHtml(correctOpt.text)}</p>
     <p>${escapeHtml(item.explanation)}</p>
   `;
 }
@@ -335,7 +335,7 @@ function startTimer() {
       state.timeRemaining = 0;
       updateTimerDisplay();
       clearInterval(state.timerInterval);
-      alert("Se acabó el tiempo. El examen se enviará automáticamente.");
+      alert("O tempo acabou. O exame será enviado automaticamente.");
       finishExam();
       return;
     }
@@ -358,9 +358,9 @@ function showSummary() {
   grid.innerHTML = "";
 
   if (unansweredIdx.length > 0) {
-    const label = unansweredIdx.length === 1 ? "pregunta" : "preguntas";
+    const label = unansweredIdx.length === 1 ? "pergunta" : "perguntas";
     const numbers = unansweredIdx.map((idx) => idx + 1);
-    msg.textContent = `Ainda falta responder ${unansweredIdx.length} ${label}: ${numbers.join(", ")}. Voce deve responder todas antes de enviar a prova.`;
+    msg.textContent = `Ainda falta responder ${unansweredIdx.length} ${label}: ${numbers.join(", ")}. Você deve responder todas antes de enviar a prova.`;
     msg.classList.add("msg-warn");
     btnSubmit.disabled = true;
     setHidden(grid, false);
@@ -369,7 +369,7 @@ function showSummary() {
       const marked = state.answers[idx].marked;
       const cell = createGridCell(
         idx + 1,
-        marked ? "Marked" : "Not answered",
+        marked ? "Marcada" : "Sem resposta",
         marked ? "sg-marked" : "sg-unanswered",
         () => {
           state.currentIndex = idx;
@@ -381,7 +381,7 @@ function showSummary() {
     });
   } else {
     msg.textContent =
-      "Voce respondeu todas as questoes. Pode enviar a prova quando quiser.";
+      "Você respondeu todas as questões. Pode enviar a prova quando quiser.";
     msg.classList.add("msg-ok");
     btnSubmit.disabled = false;
     setHidden(grid, true);
@@ -412,7 +412,7 @@ function finishExam() {
     examen: "1Z0-1122-26",
     visitor_id: state.visitorId,
     numero_intento: state.attemptNumber,
-    status: ratio >= PASS_THRESHOLD ? "aprobado" : "reprobado",
+    status: ratio >= PASS_THRESHOLD ? "aprovado" : "reprovado",
     puntaje: pct,
     correctas: correct,
     incorrectas: incorrect,
@@ -429,15 +429,15 @@ function finishExam() {
   badge.classList.remove("not-approved", "improve", "ready");
   if (ratio < PASS_THRESHOLD) {
     badge.textContent =
-      "Ainda não foi aprobado. Continua praticando, revisa as respostas incorrectas e segue estudando.";
+      "Ainda não foi aprovado. Continue praticando, revise as respostas incorretas e siga estudando.";
     badge.classList.add("not-approved");
   } else if (ratio < IMPROVE_THRESHOLD) {
     badge.textContent =
-      "Parabéns! Você passou na prova, mas ainda pode continuar melhorando. Revise as respostas incorretas — vale a pena o esforço.";
+      "Parabéns! Você passou no simulado, mas ainda pode continuar melhorando. Revise as respostas incorretas — vale a pena o esforço.";
     badge.classList.add("improve");
   } else if (ratio < OFFICIAL_EXAM_THRESHOLD) {
     badge.textContent =
-      "Parabéns! Você passou no simulado. Com um pouco mais de prática, você pode alcançar 80%.;
+      "Parabéns! Você passou no simulado. Com um pouco mais de prática, você pode alcançar 80%.";
     badge.classList.add("ready");
   } else {
     badge.textContent =
@@ -485,9 +485,9 @@ function getIncorrectIndexes() {
 function showIncorrectScreen() {
   const incorrectIdx = getIncorrectIndexes();
   const label =
-    incorrectIdx.length === 1 ? "pregunta incorrecta" : "preguntas incorrectas";
+    incorrectIdx.length === 1 ? "pergunta incorreta" : "perguntas incorretas";
   byId("incorrect-msg").textContent =
-    `Tienes ${incorrectIdx.length} ${label}. Clique em um número para ver a explicação.`;
+    `Você tem ${incorrectIdx.length} ${label}. Clique em um número para ver a explicação.`;
 
   const grid = byId("incorrect-grid");
   grid.innerHTML = "";
@@ -496,7 +496,7 @@ function showIncorrectScreen() {
 
   incorrectIdx.forEach((idx) => {
     grid.appendChild(
-      createGridCell(idx + 1, "Incorrect", "sg-incorrect", () =>
+      createGridCell(idx + 1, "Incorreta", "sg-incorrect", () =>
         renderIncorrectDetail(idx),
       ),
     );
